@@ -1,26 +1,66 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { BlurView } from 'expo-blur';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { BlurView } from "expo-blur";
+import { Colors } from "@/constants/Colors";
+import { Entypo, MaterialCommunityIcons, AntDesign } from "@expo/vector-icons";
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 
-const TabBar = ({ state, descriptors, navigation }: any) => {
+type RouteIconProps = {
+  color: string;
+  [key: string]: any;
+};
+
+type IconComponents = {
+  [key: string]: (props: RouteIconProps) => JSX.Element;
+};
+
+const TabBar: React.FC<BottomTabBarProps> = ({
+  state,
+  descriptors,
+  navigation,
+}) => {
+  const icons: IconComponents = {
+    index: (props) => (
+      <Entypo name="wallet" size={26} color={Colors.greyColor} {...props} />
+    ),
+    swap: (props) => (
+      <Entypo name="swap" size={26} color={Colors.greyColor} {...props} />
+    ),
+    buysell: (props) => (
+      <MaterialCommunityIcons
+        name="hexagon-outline"
+        size={26}
+        color={Colors.greyColor}
+        {...props}
+      />
+    ),
+    profile: (props) => (
+      <AntDesign
+        name="appstore1"
+        size={26}
+        color={Colors.greyColor}
+        {...props}
+      />
+    ),
+  };
+
   return (
-    <View style={styles.tabBarStyle}>
-      {state.routes.map((route:any, index:number) => {
+    <BlurView intensity={90} style={styles.tabBarStyle}>
+      {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
             ? options.title
-            : route.name; 
+            : route.name;
 
-
+        if (["_sitemap", "+not-found"].includes(route.name)) return null;
         const isFocused = state.index === index;
 
         const onPress = () => {
           const event = navigation.emit({
-            type: 'tabPress',
+            type: "tabPress",
             target: route.key,
             canPreventDefault: true,
           });
@@ -32,13 +72,16 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
 
         const onLongPress = () => {
           navigation.emit({
-            type: 'tabLongPress',
+            type: "tabLongPress",
             target: route.key,
           });
         };
 
+        const IconComponent = icons[route.name];
+
         return (
           <TouchableOpacity
+            key={route.name}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -47,37 +90,50 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
             onLongPress={onLongPress}
             style={styles.tabBarItem}
           >
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {label}
-            </Text>
+            {IconComponent && (
+              <IconComponent
+                color={isFocused ? Colors.tabIconGradient : Colors.greyColor}
+              />
+            )}
           </TouchableOpacity>
         );
       })}
-    </View>
-  )
-}
-
-export default TabBar
+    </BlurView>
+  );
+};
 
 const styles = StyleSheet.create({
   tabBarStyle: {
     position: "absolute",
-    bottom: 30,
+    bottom: 50,
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 20,
     paddingVertical: 15,
     borderRadius: 25,
-    backgroundColor: 'rgba(102, 89, 123, 0.72)',
+    backgroundColor: "rgba(94, 79, 113, 0.6)",
     borderCurve: "continuous",
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 10},
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 10 },
     shadowRadius: 10,
     shadowOpacity: 0.1,
+    overflow: "hidden",
   },
   tabBarItem: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    gap: 4,
   },
-})
+  tabBarContainer: {
+    borderRadius: 9,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    overflow: "hidden",
+    flex: 1,
+    width: "100%",
+    backgroundColor: "transparent",
+  },
+});
+
+export default TabBar;
