@@ -19,7 +19,7 @@ export async function GET(request: Request) {
   return Response.json(data);
 }
 
-const data = {
+const dataJSON = {
   '1': {
     id: 1,
     name: 'Bitcoin',
@@ -209,3 +209,5 @@ const data = {
     infinite_supply: true,
   },
 };
+
+export default dataJSON

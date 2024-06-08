@@ -20,32 +20,16 @@ const TabBar: React.FC<BottomTabBarProps> = ({
   navigation,
 }) => {
   const icons: IconComponents = {
-    index: (props) => (
-      <Entypo name="wallet" size={26} color={Colors.greyColor} {...props} />
-    ),
-    swap: (props) => (
-      <Entypo name="swap" size={26} color={Colors.greyColor} {...props} />
-    ),
+    index: (props) => <Entypo name="wallet" size={30} {...props} />,
+    swap: (props) => <Entypo name="swap" size={30} {...props} />,
     buysell: (props) => (
-      <MaterialCommunityIcons
-        name="hexagon-outline"
-        size={26}
-        color={Colors.greyColor}
-        {...props}
-      />
+      <MaterialCommunityIcons name="hexagon-outline" size={30} {...props} />
     ),
-    profile: (props) => (
-      <AntDesign
-        name="appstore1"
-        size={26}
-        color={Colors.greyColor}
-        {...props}
-      />
-    ),
+    profile: (props) => <AntDesign name="appstore1" size={30} {...props} />,
   };
 
   return (
-    <BlurView intensity={90} style={styles.tabBarStyle}>
+    <BlurView intensity={100} style={styles.tabBarStyle}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -92,7 +76,7 @@ const TabBar: React.FC<BottomTabBarProps> = ({
           >
             {IconComponent && (
               <IconComponent
-                color={isFocused ? Colors.tabIconGradient : Colors.greyColor}
+                color={isFocused ? Colors.tabIconGradient : Colors.lightGray}
               />
             )}
           </TouchableOpacity>
@@ -105,13 +89,13 @@ const TabBar: React.FC<BottomTabBarProps> = ({
 const styles = StyleSheet.create({
   tabBarStyle: {
     position: "absolute",
-    bottom: 50,
+    bottom: 30,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: 20,
-    paddingVertical: 15,
+    marginHorizontal: 40,
+    paddingVertical: 16,
     borderRadius: 25,
-    backgroundColor: "rgba(94, 79, 113, 0.6)",
+    backgroundColor: "rgba(166, 137, 183, 0.2)",
     borderCurve: "continuous",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 10 },
