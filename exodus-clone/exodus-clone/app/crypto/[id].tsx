@@ -36,10 +36,6 @@ import {
 
 const filters = ["24H", "7D", "1M", "3M", "6M", "1Y"];
 
-function ToolTip({ x, y }: { x: SharedValue<number>; y: SharedValue<number> }) {
-  return <Circle cx={x} cy={y} r={8} color={Colors.tabIconGradient} />;
-}
-
 Animated.addWhitelistedNativeProps({ text: true });
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
@@ -51,10 +47,35 @@ const Page = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
+  function ToolTip({
+    x,
+    y,
+  }: {
+    x: SharedValue<number>;
+    y: SharedValue<number>;
+  }) {
+    return <Circle cx={x} cy={y} r={8} color={lineColor} />;
+  }
   useEffect(() => {
-    // console.log(isActive);
     if (isActive) Haptics.selectionAsync();
-  }, [isActive]);
+    switch (id) {
+      case "1":
+        setLineColor("#FF8F00");
+        break;
+      case "1027":
+        setLineColor("#7091F5");
+        break;
+      case "825":
+        setLineColor("#00FFD1");
+        break;
+      case "1839":
+        setLineColor("#FFFF00");
+        break;
+      case "5426":
+        setLineColor("#72FFFF");
+        break;
+    }
+  }, [isActive, id]);
 
   const animatedText = useAnimatedProps(() => {
     return {
@@ -71,15 +92,12 @@ const Page = () => {
     };
   });
 
-  function randomizePrices(tickersData) {
-    tickersData.forEach((ticker) => {
-      const randomPrice = Math.random() * (7200 - 39300 + 1) + 72000;
-
-      ticker.price = randomPrice;
-    });
-
-    return tickersData;
+  const [filterNumber, setFilterNumber] = useState(0);
+  function getRandomFilterNumber() {
+    setFilterNumber(Math.floor(Math.random() * 69));
   }
+
+  const [lineColor, setLineColor] = useState("");
 
   return (
     <>
@@ -188,7 +206,7 @@ const Page = () => {
                     font,
                     tickCount: { x: 0, y: 2 },
                     tickValues: {
-                      x: [0, 70],
+                      x: [filterNumber, 70],
                       y: [39300, 72018],
                     },
                     lineColor: { grid: "#fff", frame: "transparent" },
@@ -207,7 +225,7 @@ const Page = () => {
                     <>
                       <Line
                         points={points.price}
-                        color="#FF8F00"
+                        color={lineColor}
                         strokeWidth={3}
                         animate={{ type: "timing", duration: 500 }}
                       />
@@ -219,7 +237,7 @@ const Page = () => {
                         <LinearGradient
                           start={vec(chartBounds.bottom, 10)}
                           end={vec(chartBounds.bottom, chartBounds.bottom)}
-                          colors={["#FF8F00", "transparent"]}
+                          colors={[lineColor, "transparent"]}
                         />
                       </Area>
                       {isActive && (
@@ -246,7 +264,7 @@ const Page = () => {
                   <TouchableOpacity
                     onPress={() => {
                       setActiveIndex(index);
-                      randomizePrices(tickersData.slice(0, 50));
+                      getRandomFilterNumber();
                     }}
                     key={index}
                     style={
@@ -266,7 +284,6 @@ const Page = () => {
               <View
                 style={{
                   height: 90,
-
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
