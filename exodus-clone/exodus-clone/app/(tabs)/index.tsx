@@ -39,7 +39,7 @@ const Page = () => {
   // });
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }} forceInset={{ bottom: 'never' }} >
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.background }}>
       <ScrollView
         style={{
           backgroundColor: Colors.background,
