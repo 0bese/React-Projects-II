@@ -1,19 +1,37 @@
-import { ScrollView, SectionList, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  SectionList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Colors } from "@/constants/Colors";
+import dataJSON from "../api/infoApi";
+import listData from "../api/listingsApi";
+import { BlurView } from "expo-blur";
+import { defaultStyles } from "@/constants/Styles";
+import { CartesianChart, Line } from "victory-native";
+import tickersData from "../api/tickers";
 const Page = () => {
-  const { id } = useLocalSearchParams();
+  let { id } = useLocalSearchParams();
   const headerHeight = useHeaderHeight();
-  console.log(id);
 
   return (
     <>
-      <Stack.Screen options={{ title: "Bitcoin" }} />
+      <Stack.Screen
+        options={{
+          title: dataJSON[id].name,
+          contentStyle: { backgroundColor: Colors.background },
+        }}
+      />
       <SectionList
+        collapsable
         contentInsetAdjustmentBehavior="automatic"
-        style={{ backgroundColor: Colors.background }}
+        style={{ marginTop: headerHeight }}
         keyExtractor={(i) => i.title}
         sections={[{ data: [{ title: "Chart" }] }]}
         ListHeaderComponent={() => (
@@ -26,11 +44,50 @@ const Page = () => {
                 marginHorizontal: 20,
               }}
             >
-              <Text style={styles.subtitle}> BTC</Text>
+              <Text style={styles.subtitle}> {dataJSON[id].symbol}</Text>
+              <Image
+                source={{
+                  uri: dataJSON[id].logo,
+                }}
+                style={{ width: 60, height: 60 }}
+              />
             </View>
           </>
         )}
-        renderItem={({ item }) => <Text> nvm</Text>}
+        renderItem={({ item }) => (
+          <>
+            <BlurView
+              style={[
+                defaultStyles.block,
+                {
+                  overflow: "hidden",
+                  height: 400,
+                  marginTop: 30,
+                  padding: 0,
+                  marginHorizontal: 20,
+                },
+              ]}
+            >
+              <View style={{ height: 150 }}></View>
+              <CartesianChart
+                onChartBoundsChange={() => 0}
+                axisOptions={{
+                  tickCount: { x: 0, y: 0 },
+                  lineColor: "#fff",
+                }}
+                data={tickersData}
+                xKey="timestamp"
+                yKeys={["price"]}
+              >
+                {/* 👇 render function exposes various data, such as points. */}
+                {({ points }) => (
+                  // 👇 and we'll use the Line component to render a line path.
+                  <Line points={points.price} color="#FF8F00" strokeWidth={3} />
+                )}
+              </CartesianChart>
+            </BlurView>
+          </>
+        )}
       ></SectionList>
     </>
   );

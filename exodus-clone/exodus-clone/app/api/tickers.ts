@@ -1,16 +1,16 @@
-import { Request, Response } from 'expo-router/server';
+// import { Request, Response } from 'expo-router/server';
 
-export async function GET(request: Request) {
-  // const response = await fetch(
-  //   `https://api.coinpaprika.com/v1/tickers/btc-bitcoin/historical?start=2024-01-01&interval=1d`
-  // );
+// export async function GET(request: Request) {
+//   // const response = await fetch(
+//   //   `https://api.coinpaprika.com/v1/tickers/btc-bitcoin/historical?start=2024-01-01&interval=1d`
+//   // );
 
-  // const res = await response.json();
-  // return ExpoResponse.json(res.data);
-  return Response.json(data);
-}
+//   // const res = await response.json();
+//   // return ExpoResponse.json(res.data);
+//   return Response.json(data);
+// }
 
-const data = [
+const tickersData = [
   {
     timestamp: '2024-01-01T00:00:00Z',
     price: 42850.26,
@@ -444,3 +444,5 @@ const data = [
     market_cap: 1415263222742,
   },
 ];
+
+export default tickersData

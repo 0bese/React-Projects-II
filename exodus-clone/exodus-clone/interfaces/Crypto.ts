@@ -18,6 +18,10 @@ export interface Currency {
     last_updated: string;
     quote: Quote;
   }
+
+  export interface dataJson {
+    id: number;
+  }
   
   interface Quote {
     EUR: EUR;
