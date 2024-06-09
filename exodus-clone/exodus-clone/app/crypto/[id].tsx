@@ -71,6 +71,16 @@ const Page = () => {
     };
   });
 
+  function randomizePrices(tickersData) {
+    tickersData.forEach((ticker) => {
+      const randomPrice = Math.random() * (7200 - 39300 + 1) + 72000;
+
+      ticker.price = randomPrice;
+    });
+
+    return tickersData;
+  }
+
   return (
     <>
       <Stack.Screen
@@ -112,7 +122,7 @@ const Page = () => {
                 defaultStyles.block,
                 {
                   overflow: "hidden",
-                  height: 400,
+                  height: 600,
                   marginTop: 30,
                   padding: 0,
                   marginHorizontal: 20,
@@ -234,7 +244,10 @@ const Page = () => {
               >
                 {filters.map((filter, index) => (
                   <TouchableOpacity
-                    onPress={() => setActiveIndex(index)}
+                    onPress={() => {
+                      setActiveIndex(index);
+                      randomizePrices(tickersData.slice(0, 50));
+                    }}
                     key={index}
                     style={
                       activeIndex === index ? styles.categoriesBtnActive : ""
@@ -249,6 +262,64 @@ const Page = () => {
                     </Text>
                   </TouchableOpacity>
                 ))}
+              </View>
+              <View
+                style={{
+                  height: 90,
+
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontWeight: 600,
+                      color: "#fff",
+                      fontSize: 20,
+                    }}
+                  >
+                    0
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#373A40",
+                    }}
+                  >
+                    {dataJSON[id].symbol}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    borderLeftWidth: 1,
+                    borderLeftColor: Colors.lightGray,
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontWeight: 600,
+                      color: "#fff",
+                      fontSize: 20,
+                    }}
+                  >
+                    $0.00
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#373A40",
+                    }}
+                  >
+                    Value
+                  </Text>
+                </View>
               </View>
             </BlurView>
           </>
