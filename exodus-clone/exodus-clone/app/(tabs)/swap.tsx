@@ -1,7 +1,8 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Link, Tabs } from "expo-router";
 import { Colors } from "@/constants/Colors";
+import Toggle from "@/components/Toggle";
 
 const Swap = () => {
   return (
@@ -11,11 +12,11 @@ const Swap = () => {
         backgroundColor: Colors.primary,
       }}
     >
-      <View>
-        <Text>Swap</Text>
-        <Text>Swap</Text>
-        <Text>Swap</Text>
-      </View>
+      <ScrollView>
+        <View>
+          <Toggle leftLabel="buy" rightLabel="sell" isLeftButtonActive={true} />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
