@@ -4,6 +4,7 @@ import { Tabs } from "expo-router";
 import { Colors } from "@/constants/Colors";
 import { useHeaderHeight } from "@react-navigation/elements";
 import Toggle from "@/components/Toggle";
+import Toggle3btn from "@/components/Toggle3btn";
 
 const Buysell = () => {
   const headerHeight = useHeaderHeight();
@@ -20,6 +21,9 @@ const Buysell = () => {
         <Text>BTC </Text>
         <Text>BTC </Text>
         <Text>BTC </Text>
+        <View>
+          <Toggle3btn />
+        </View>
       </ScrollView>
     </>
   );
