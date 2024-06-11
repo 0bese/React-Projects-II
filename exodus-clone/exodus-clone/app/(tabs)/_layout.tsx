@@ -4,6 +4,7 @@ import { Tabs } from "expo-router";
 import TabBar from "@/components/TabBar";
 import { Colors } from "@/constants/Colors";
 import { BlurView } from "expo-blur";
+import Toggle from "@/components/Toggle";
 
 const Layout = () => {
   return (
@@ -30,7 +31,7 @@ const Layout = () => {
       <Tabs.Screen
         name="buysell"
         options={{
-          title: "BuySell",
+          title: "",
           headerShown: false,
         }}
       />

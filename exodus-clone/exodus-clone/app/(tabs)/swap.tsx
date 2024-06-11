@@ -13,9 +13,13 @@ const Swap = () => {
       }}
     >
       <ScrollView>
-        <View>
-          <Toggle leftLabel="buy" rightLabel="sell" isLeftButtonActive={true} />
+        <View style={{ position: "static" }}>
+          <Toggle leftLabel="Buy" rightLabel="Sell" />
         </View>
+        <Text>USDT </Text>
+        <Text>USDT </Text>
+        <Text>USDT </Text>
+        <Text>USDT </Text>
       </ScrollView>
     </SafeAreaView>
   );
