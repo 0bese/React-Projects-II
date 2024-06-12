@@ -61,6 +61,7 @@ export default function RootLayout() {
           ),
         }}
       />
+      <Stack.Screen name="currency/[id]" />
     </Stack>
   );
 }

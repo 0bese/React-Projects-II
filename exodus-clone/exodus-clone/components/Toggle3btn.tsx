@@ -9,21 +9,22 @@ import React, { useEffect, useRef, useState } from "react";
 
 interface Props {
   leftLabel?: string;
+  midLabel?: string;
   rightLabel?: string;
 }
 
-const Toggle3btn = () => {
+const Toggle3btn = ({ leftLabel, midLabel, rightLabel }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const buttonTranslateX = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.spring(buttonTranslateX, {
-      toValue: activeIndex * 100, // Assuming each button is one-third of the container width (150 / 3)
+      toValue: activeIndex === 0 ? 10 : activeIndex * 99,
       useNativeDriver: true,
     }).start();
   }, [activeIndex]);
 
-  const handleTabClicked = (index) => {
+  const handleTabClicked = (index: number) => {
     setActiveIndex(index);
   };
 
@@ -48,7 +49,7 @@ const Toggle3btn = () => {
               activeIndex === 0 && styles.activeLabel,
             ]}
           >
-            Buy
+            {leftLabel}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -61,7 +62,7 @@ const Toggle3btn = () => {
               activeIndex === 1 && styles.activeLabel,
             ]}
           >
-            Sell
+            {midLabel}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -74,7 +75,7 @@ const Toggle3btn = () => {
               activeIndex === 2 && styles.activeLabel,
             ]}
           >
-            Hold
+            {rightLabel}
           </Text>
         </TouchableOpacity>
       </View>
@@ -97,14 +98,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#26355D",
     flexDirection: "row",
     alignItems: "center",
-    padding: 5,
+    padding: 8,
+    marginLeft: 9,
+    borderCurve: "continuous",
     position: "relative",
   },
   animatedIndicator: {
     position: "absolute",
     height: "95%",
-    width: "33%", // Indicator covers one-third the width of the container
+    width: "33.333%",
     backgroundColor: "#8576FF",
+    marginHorizontal: "auto",
     borderRadius: 25,
   },
   tab: {
@@ -113,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   labelStyles: {
-    color: "#000",
+    color: "#fff",
     fontSize: 16,
   },
   activeLabel: {

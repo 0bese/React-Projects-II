@@ -16,7 +16,10 @@ const Swap = () => {
         <View style={{ position: "static" }}>
           <Toggle leftLabel="Buy" rightLabel="Sell" />
         </View>
-        <Text>USDT </Text>
+
+        <View>
+          <Text>USDT </Text>
+        </View>
         <Text>USDT </Text>
         <Text>USDT </Text>
         <Text>USDT </Text>

@@ -1,4 +1,11 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import { Colors } from "@/constants/Colors";
@@ -17,12 +24,16 @@ const Buysell = () => {
         <View style={{ position: "static" }}>
           <Toggle leftLabel="Buy" rightLabel="Sell" />
         </View>
-        <Text>BTC </Text>
-        <Text>BTC </Text>
-        <Text>BTC </Text>
-        <Text>BTC </Text>
+        <View style={{ margin: "auto" }}>
+          <Image
+            source={{
+              uri: "https://pngtree.com/freepng/american-flag-usa-circle-icon_7925809.html",
+            }}
+            style={{ width: 50, height: 50 }}
+          />
+        </View>
         <View>
-          <Toggle3btn />
+          <Toggle3btn leftLabel="$150" midLabel="$500" rightLabel="MAX" />
         </View>
       </ScrollView>
     </>
