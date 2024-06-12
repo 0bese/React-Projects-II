@@ -18,11 +18,13 @@ const Swap = () => {
         </View>
 
         <View>
+          <Text>I have </Text>
+
+          <Text>I have </Text>
+        </View>
+        <View>
           <Text>USDT </Text>
         </View>
-        <Text>USDT </Text>
-        <Text>USDT </Text>
-        <Text>USDT </Text>
       </ScrollView>
     </SafeAreaView>
   );

@@ -8,9 +8,9 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 
 interface Props {
-  leftLabel?: string;
-  midLabel?: string;
-  rightLabel?: string;
+  leftLabel: string;
+  midLabel: string;
+  rightLabel: string;
 }
 
 const Toggle3btn = ({ leftLabel, midLabel, rightLabel }: Props) => {

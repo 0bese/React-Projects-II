@@ -14,11 +14,10 @@ import { defaultStyles } from "@/constants/Styles";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { BlurView } from "expo-blur";
 import { Ionicons } from "@expo/vector-icons";
-
 import listData from "../api/listingsApi";
+
 import dataJSON from "../api/infoApi";
-import { Currency } from "@/interfaces/Crypto";
-// import { Currency } from "@/interfaces/Crypto";
+import { currency } from "@/interfaces/Crypto";
 
 const Page = () => {
   const headerHeight = useHeaderHeight();

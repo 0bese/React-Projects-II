@@ -1,5 +1,7 @@
 // import { Request, Response } from 'expo-router/server';
 
+import { DataJSON } from "@/interfaces/Crypto";
+
 // const API_KEY = process.env.CRYPTO_API_KEY;
 
 // export async function GET(request: Request) {
@@ -19,7 +21,7 @@
 //   return Response.json(data);
 // }
 
-const dataJSON = {
+const dataJSON: DataJSON = {
   '1': {
     id: 1,
     name: 'Bitcoin',
