@@ -9,8 +9,9 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { TouchableOpacity, View } from "react-native";
 import "react-native-reanimated";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
+import Toggle from "@/components/Toggle";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -39,12 +40,7 @@ export default function RootLayout() {
           title: "",
           headerLeft: () => (
             <TouchableOpacity onPress={router.back}>
-              <AntDesign
-                style={{ marginLeft: 5 }}
-                name="close"
-                size={24}
-                color={Colors.lightGray}
-              />
+              <AntDesign name="close" size={24} color={Colors.lightGray} />
             </TouchableOpacity>
           ),
           headerTransparent: true,
@@ -61,7 +57,34 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Stack.Screen name="currency/[id]" />
+      <Stack.Screen
+        name="currency/trade"
+        options={{
+          title: "",
+          headerTitle: () => (
+            <View>
+              <Toggle leftLabel="Buy" rightLabel="Sell" />
+            </View>
+          ),
+          headerLeft: () => (
+            <TouchableOpacity onPress={router.back}>
+              <AntDesign
+                style={{ marginLeft: 5 }}
+                name="arrowleft"
+                size={24}
+                color={Colors.lightGray}
+              />
+            </TouchableOpacity>
+          ),
+          headerTransparent: true,
+          headerLargeTitle: true,
+          headerRight: () => (
+            <TouchableOpacity>
+              <Entypo name="back-in-time" size={24} color={Colors.lightGray} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
     </Stack>
   );
 }

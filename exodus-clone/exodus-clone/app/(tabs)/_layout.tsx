@@ -1,12 +1,22 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
-import { Tabs } from "expo-router";
+import { router, Stack, Tabs } from "expo-router";
 import TabBar from "@/components/TabBar";
 import { Colors } from "@/constants/Colors";
 import { BlurView } from "expo-blur";
 import Toggle from "@/components/Toggle";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 const Layout = () => {
+  const { top } = useSafeAreaInsets();
   return (
     <Tabs
       tabBar={(props) => <TabBar {...props} />}
@@ -31,7 +41,6 @@ const Layout = () => {
       <Tabs.Screen
         name="buysell"
         options={{
-          title: "",
           headerShown: false,
         }}
       />

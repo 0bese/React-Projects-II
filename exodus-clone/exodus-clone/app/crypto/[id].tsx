@@ -33,6 +33,7 @@ import {
   GestureHandlerRootView,
   TextInput,
 } from "react-native-gesture-handler";
+import { currency } from "@/interfaces/Crypto";
 
 const filters = ["24H", "7D", "1M", "3M", "6M", "1Y"];
 
@@ -41,6 +42,7 @@ const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
 
 const Page = () => {
   let { id } = useLocalSearchParams();
+  id = id!.toString();
   const headerHeight = useHeaderHeight();
   const font = useFont(require("@/assets/fonts/SpaceMono-Regular.ttf"), 12);
   const { state, isActive } = useChartPressState({ x: 0, y: { price: 0 } });
