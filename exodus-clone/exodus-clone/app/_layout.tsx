@@ -63,11 +63,11 @@ export default function RootLayout() {
           title: "",
           headerTitle: () => (
             <View>
-              <Toggle leftLabel="Buy" rightLabel="Sell" />
+              <Toggle leftLabel="Buy" rightLabel="Sell" selectedOption={selectedOption} onOptionPress={()=> } />
             </View>
           ),
           headerLeft: () => (
-            <TouchableOpacity onPress={router.back}>
+            <TouchableOpacity onPress={() => router.replace("/(tabs)")}>
               <AntDesign
                 style={{ marginLeft: 5 }}
                 name="arrowleft"

@@ -5,12 +5,18 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Colors } from "@/constants/Colors";
 import { useHeaderHeight } from "@react-navigation/elements";
+import Toggle3btn from "@/components/Toggle3btn";
+import sika from "../api/cntry";
+import { defaultStyles } from "@/constants/Styles";
+
+//wei
 
 const trade = () => {
   const headerHeight = useHeaderHeight();
+
   return (
     <ScrollView
       contentContainerStyle={{ paddingTop: headerHeight }}
@@ -19,7 +25,56 @@ const trade = () => {
       }}
     >
       <View>
-        <Text> this is the trade place</Text>
+        <View>
+          <View
+            style={{
+              backgroundColor: "grey",
+              borderRadius: 50,
+              height: 30,
+              width: 30,
+            }}
+          ></View>
+          <Text> USD. </Text>
+        </View>
+        <Text> 150</Text>
+      </View>
+      <View>
+        <View>
+          <View
+            style={{
+              backgroundColor: "grey",
+              borderRadius: 50,
+              height: 30,
+              width: 30,
+            }}
+          ></View>
+          <Text> BTC. </Text>
+        </View>
+        <Text> ~0.0027</Text>
+      </View>
+      <View>
+        <Toggle3btn leftLabel="$150" midLabel="$500" rightLabel="MAX" />
+      </View>
+      <Text>Debit Card with MoonPay</Text>
+
+      <View>
+        <TouchableOpacity
+          style={[
+            defaultStyles.pillButton,
+            {
+              backgroundColor: Colors.primaryMuted,
+              flexDirection: "row",
+
+              width: "50%",
+              borderCurve: "continuous",
+            },
+          ]}
+        >
+          <Text style={[defaultStyles.buttonText, { color: "#fff" }]}>
+            {" "}
+            Continue
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

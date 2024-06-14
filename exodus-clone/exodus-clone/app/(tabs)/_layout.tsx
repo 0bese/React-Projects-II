@@ -19,6 +19,7 @@ const Layout = () => {
   const { top } = useSafeAreaInsets();
   return (
     <Tabs
+      backBehavior="history"
       tabBar={(props) => <TabBar {...props} />}
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
