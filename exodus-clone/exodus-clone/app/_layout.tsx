@@ -6,7 +6,7 @@ import {
 import { useFonts } from "expo-font";
 import { router, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import "react-native-reanimated";
 import { AntDesign, Entypo } from "@expo/vector-icons";
@@ -17,6 +17,13 @@ import Toggle from "@/components/Toggle";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const [selectedOption, setSelectedOption] = useState("Buy");
+  useEffect(() => {
+    console.log(selectedOption);
+    if (selectedOption === "Sell") {
+    }
+  }, [selectedOption]);
+
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -63,7 +70,13 @@ export default function RootLayout() {
           title: "",
           headerTitle: () => (
             <View>
-              <Toggle leftLabel="Buy" rightLabel="Sell" selectedOption={selectedOption} onOptionPress={()=> } />
+              <Toggle
+                leftLabel="Buy"
+                rightLabel="Sell"
+                options={["a", "b"]}
+                selectedOption={selectedOption}
+                onOptionPress={setSelectedOption}
+              />
             </View>
           ),
           headerLeft: () => (

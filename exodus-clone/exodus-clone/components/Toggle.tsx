@@ -11,69 +11,72 @@ interface ToggleControlProps {
   leftLabel: string;
   rightLabel: string;
   options: string[];
-  selectedOption: string;
+  selectedOption?: string;
   onOptionPress?: (option: string) => void;
 }
 
 const Toggle: React.FC<ToggleControlProps> = React.memo(
-  ({ leftLabel, rightLabel, options, selectedOption, onOptionPress}) => {
-    options = [leftLabel,rightLabel]
-  const [isLeftButtonActive, setIsLeftButtonActive] = useState(true);
-  const buttonTranslateX = useRef(new Animated.Value(0)).current;
+  ({ leftLabel, rightLabel, options, selectedOption, onOptionPress }) => {
+    const [isLeftButtonActive, setIsLeftButtonActive] = useState(
+      selectedOption === leftLabel
+    );
+    const buttonTranslateX = useRef(
+      new Animated.Value(selectedOption === leftLabel ? 0 : 75)
+    ).current;
 
-  useEffect(() => {
-    Animated.spring(buttonTranslateX, {
-      toValue: isLeftButtonActive ? 2 : 75, // Half of the container width (150 / 2)
-      useNativeDriver: true,
-    }).start();
-  }, [isLeftButtonActive]);
+    useEffect(() => {
+      Animated.spring(buttonTranslateX, {
+        toValue: isLeftButtonActive ? 2 : 75, // Half of the container width (150 / 2)
+        useNativeDriver: true,
+      }).start();
+    }, [isLeftButtonActive]);
 
-  const handleLeftTabClicked = () => {
-    setIsLeftButtonActive(true);
-    onOptionPress?.(leftLabel)
-  };
+    const handleLeftTabClicked = () => {
+      setIsLeftButtonActive(true);
+      onOptionPress?.(leftLabel);
+    };
 
-  const handleRightTabClicked = () => {
-    setIsLeftButtonActive(false);
-    onOptionPress?.(rightLabel)
-  };
-}
-)
-  return (
-    <View style={styles.toggleContainer}>
-      <View style={styles.tabContainer}>
-        <Animated.View
-          style={[
-            styles.animatedIndicator,
-            {
-              transform: [{ translateX: buttonTranslateX }],
-            },
-          ]}
-        />
-        <TouchableOpacity onPress={handleLeftTabClicked} style={styles.tab}>
-          <Text
+    const handleRightTabClicked = () => {
+      setIsLeftButtonActive(false);
+      onOptionPress?.(rightLabel);
+    };
+
+    return (
+      <View style={styles.toggleContainer}>
+        <View style={styles.tabContainer}>
+          <Animated.View
             style={[
-              styles.labelStyles,
-              isLeftButtonActive && styles.activeLabel,
+              styles.animatedIndicator,
+              {
+                transform: [{ translateX: buttonTranslateX }],
+              },
             ]}
-          >
-            {leftLabel}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={handleRightTabClicked} style={styles.tab}>
-          <Text
-            style={[
-              styles.labelStyles,
-              !isLeftButtonActive && styles.activeLabel,
-            ]}
-          >
-            {rightLabel}
-          </Text>
-        </TouchableOpacity>
+          />
+          <TouchableOpacity onPress={handleLeftTabClicked} style={styles.tab}>
+            <Text
+              style={[
+                styles.labelStyles,
+                isLeftButtonActive && styles.activeLabel,
+              ]}
+            >
+              {leftLabel}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleRightTabClicked} style={styles.tab}>
+            <Text
+              style={[
+                styles.labelStyles,
+                !isLeftButtonActive && styles.activeLabel,
+              ]}
+            >
+              {rightLabel}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 export default Toggle;
 
@@ -115,7 +118,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 // import React from 'react';
 // import {
 //   StyleSheet,
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
 //   options: string[];
 //   selectedOption: string;
 //   onOptionPress?: (option: string) => void;
-// };
+// // };
 
 // const SegmentedControl: React.FC<SegmentedControlProps> = React.memo(
 //   ({ options, selectedOption, onOptionPress }) => {

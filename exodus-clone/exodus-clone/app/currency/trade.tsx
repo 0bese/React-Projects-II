@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { useHeaderHeight } from "@react-navigation/elements";
 import Toggle3btn from "@/components/Toggle3btn";
@@ -62,7 +62,7 @@ const trade = () => {
           style={[
             defaultStyles.pillButton,
             {
-              backgroundColor: Colors.primaryMuted,
+              backgroundColor: "#8576FF",
               flexDirection: "row",
 
               width: "50%",
