@@ -17,13 +17,6 @@ import Toggle from "@/components/Toggle";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [selectedOption, setSelectedOption] = useState("Buy");
-  useEffect(() => {
-    console.log(selectedOption);
-    if (selectedOption === "Sell") {
-    }
-  }, [selectedOption]);
-
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -64,40 +57,7 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Stack.Screen
-        name="currency/trade"
-        options={{
-          title: "",
-          headerTitle: () => (
-            <View>
-              <Toggle
-                leftLabel="Buy"
-                rightLabel="Sell"
-                options={["a", "b"]}
-                selectedOption={selectedOption}
-                onOptionPress={setSelectedOption}
-              />
-            </View>
-          ),
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => router.replace("/(tabs)")}>
-              <AntDesign
-                style={{ marginLeft: 5 }}
-                name="arrowleft"
-                size={24}
-                color={Colors.lightGray}
-              />
-            </TouchableOpacity>
-          ),
-          headerTransparent: true,
-          headerLargeTitle: true,
-          headerRight: () => (
-            <TouchableOpacity>
-              <Entypo name="back-in-time" size={24} color={Colors.lightGray} />
-            </TouchableOpacity>
-          ),
-        }}
-      />
+      <Stack.Screen name="currency" options={{ headerShown: false }} />
     </Stack>
   );
 }

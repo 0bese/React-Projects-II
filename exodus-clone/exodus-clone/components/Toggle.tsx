@@ -10,13 +10,13 @@ import React, { useEffect, useRef, useState } from "react";
 interface ToggleControlProps {
   leftLabel: string;
   rightLabel: string;
-  options: string[];
+
   selectedOption?: string;
   onOptionPress?: (option: string) => void;
 }
 
 const Toggle: React.FC<ToggleControlProps> = React.memo(
-  ({ leftLabel, rightLabel, options, selectedOption, onOptionPress }) => {
+  ({ leftLabel, rightLabel, selectedOption, onOptionPress }) => {
     const [isLeftButtonActive, setIsLeftButtonActive] = useState(
       selectedOption === leftLabel
     );

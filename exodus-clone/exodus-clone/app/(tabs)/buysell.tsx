@@ -15,7 +15,7 @@ import Toggle from "@/components/Toggle";
 import Toggle3btn from "@/components/Toggle3btn";
 
 const Buysell = () => {
-  return <Redirect href={"../currency/trade"} />;
+  return <Redirect href={"../currency"} />;
 };
 
 export default Buysell;
