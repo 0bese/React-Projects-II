@@ -11,7 +11,7 @@ import { useHeaderHeight } from "@react-navigation/elements";
 import Toggle3btn from "@/components/Toggle3btn";
 import sika from "../api/cntry";
 import { defaultStyles } from "@/constants/Styles";
-import { router, Stack, useLocalSearchParams } from "expo-router";
+import { Link, router, Stack, useLocalSearchParams } from "expo-router";
 import Toggle from "@/components/Toggle";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 
@@ -48,47 +48,76 @@ const trade = () => {
         {selectedOption === "Buy" ? (
           <>
             <View style={styles.currContainer}>
-              <View style={styles.sikaContainer}>
-                <View
-                  style={{
-                    backgroundColor: "grey",
-                    borderRadius: 50,
-                    height: 30,
-                    width: 30,
-                  }}
-                ></View>
-                <Text style={{ color: Colors.lightGray }}> USD. </Text>
-                <Entypo
-                  name="chevron-small-down"
-                  size={24}
-                  color={Colors.lightGray}
-                />
+              <View key={sika[0].code} style={styles.sikaContainer}>
+                <Link href={`../sika/${sika[0].code}`} asChild>
+                  <TouchableOpacity
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: 4,
+                    }}
+                  >
+                    <View
+                      style={{
+                        backgroundColor: "grey",
+                        borderRadius: 50,
+                        height: 30,
+                        width: 30,
+                      }}
+                    ></View>
+                    <Text style={{ color: Colors.lightGray }}>
+                      {" "}
+                      {sika[1].code}{" "}
+                    </Text>
+                    <Entypo
+                      name="chevron-small-down"
+                      size={24}
+                      color={Colors.lightGray}
+                    />
+                  </TouchableOpacity>
+                </Link>
               </View>
               <Text style={{ color: Colors.lightGray }}> 150</Text>
             </View>
+
             <View style={styles.currContainer}>
-              <View style={styles.sikaContainer}>
-                <View
-                  style={{
-                    backgroundColor: "grey",
-                    borderRadius: 50,
-                    height: 30,
-                    width: 30,
-                  }}
-                ></View>
-                <Text style={{ color: Colors.lightGray }}> BTC. </Text>
-                <Entypo
-                  name="chevron-small-down"
-                  size={24}
-                  color={Colors.lightGray}
-                />
+              <View key={sika[1].code} style={styles.sikaContainer}>
+                <Link href={`/random`} asChild>
+                  <TouchableOpacity
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: 4,
+                    }}
+                  >
+                    <View
+                      style={{
+                        backgroundColor: "grey",
+                        borderRadius: 50,
+                        height: 30,
+                        width: 30,
+                      }}
+                    ></View>
+                    <Text style={{ color: Colors.lightGray }}> BTC. </Text>
+                    <Entypo
+                      name="chevron-small-down"
+                      size={24}
+                      color={Colors.lightGray}
+                    />
+                  </TouchableOpacity>
+                </Link>
               </View>
               <Text style={{ color: Colors.lightGray }}> ~0.0027</Text>
             </View>
+
             <View>
               <Toggle3btn leftLabel="$150" midLabel="$500" rightLabel="MAX" />
             </View>
-            <Text style={{ margin: "auto", color: Colors.lightGray }}>
+            <Text
+              style={{ margin: "auto", color: Colors.lightGray, marginTop: 10 }}
+            >
               Debit Card with MoonPay
             </Text>
 
