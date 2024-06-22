@@ -58,7 +58,8 @@ export default function RootLayout() {
         }}
       />
       <Stack.Screen name="currency" options={{ headerShown: false }} />
-      <Stack.Screen name="sika/[id]" options={{ headerShown: false }} />
+      <Stack.Screen name="sika/sika" options={{ headerShown: false }} />
+      <Stack.Screen name="random" options={{ headerShown: false }} />
     </Stack>
   );
 }

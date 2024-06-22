@@ -2,6 +2,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -20,6 +21,7 @@ import { AntDesign, Entypo } from "@expo/vector-icons";
 const trade = () => {
   const headerHeight = useHeaderHeight();
   const [selectedOption, setSelectedOption] = useState("Buy");
+  const [defaultAmount, setDefaultAmount] = useState(0);
 
   useEffect(() => {
     //console.log(selectedOption);
@@ -49,7 +51,7 @@ const trade = () => {
           <>
             <View style={styles.currContainer}>
               <View key={sika[0].code} style={styles.sikaContainer}>
-                <Link href={`../sika/${sika[0].code}`} asChild>
+                <Link href={`../sika/sika`} asChild>
                   <TouchableOpacity
                     style={{
                       flexDirection: "row",
@@ -62,11 +64,11 @@ const trade = () => {
                       style={{
                         backgroundColor: "grey",
                         borderRadius: 50,
-                        height: 30,
-                        width: 30,
+                        height: 40,
+                        width: 40,
                       }}
                     ></View>
-                    <Text style={{ color: Colors.lightGray }}>
+                    <Text style={{ color: Colors.lightGray, fontSize: 30 }}>
                       {" "}
                       {sika[1].code}{" "}
                     </Text>
@@ -78,8 +80,19 @@ const trade = () => {
                   </TouchableOpacity>
                 </Link>
               </View>
-              <Text style={{ color: Colors.lightGray }}> 150</Text>
+              <TextInput
+                value="150"
+                style={{ color: Colors.lightGray, fontSize: 30 }}
+              />
             </View>
+
+            <View
+              style={{
+                borderBottomColor: "#CCC",
+                borderBottomWidth: StyleSheet.hairlineWidth,
+                marginHorizontal: 20,
+              }}
+            />
 
             <View style={styles.currContainer}>
               <View key={sika[1].code} style={styles.sikaContainer}>
@@ -96,11 +109,13 @@ const trade = () => {
                       style={{
                         backgroundColor: "grey",
                         borderRadius: 50,
-                        height: 30,
-                        width: 30,
+                        height: 40,
+                        width: 40,
                       }}
                     ></View>
-                    <Text style={{ color: Colors.lightGray }}> BTC. </Text>
+                    <Text style={{ color: Colors.lightGray, fontSize: 30 }}>
+                      BTC
+                    </Text>
                     <Entypo
                       name="chevron-small-down"
                       size={24}
@@ -109,10 +124,13 @@ const trade = () => {
                   </TouchableOpacity>
                 </Link>
               </View>
-              <Text style={{ color: Colors.lightGray }}> ~0.0027</Text>
+              <TextInput
+                value="~0.0027"
+                style={{ color: Colors.lightGray, fontSize: 30 }}
+              />
             </View>
 
-            <View>
+            <View style={{ marginTop: 10 }}>
               <Toggle3btn leftLabel="$150" midLabel="$500" rightLabel="MAX" />
             </View>
             <Text
@@ -134,14 +152,13 @@ const trade = () => {
                     backgroundColor: "#8576FF",
                     flexDirection: "row",
                     marginHorizontal: "auto",
-                    marginTop: 450,
+                    marginTop: 250,
                     width: "50%",
                     borderCurve: "continuous",
                   },
                 ]}
               >
                 <Text style={[defaultStyles.buttonText, { color: "#fff" }]}>
-                  {" "}
                   Continue
                 </Text>
               </TouchableOpacity>
@@ -150,7 +167,6 @@ const trade = () => {
         ) : (
           <View>
             <Text style={{ color: Colors.lightGray }}>
-              {" "}
               This is the sell screen
             </Text>
           </View>
@@ -174,5 +190,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     gap: 5,
+    marginVertical: 30,
   },
 });

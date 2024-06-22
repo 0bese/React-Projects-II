@@ -15,7 +15,6 @@ import { Link } from "expo-router";
 import { AntDesign } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { useHeaderHeight } from "@react-navigation/elements";
-import { defaultStyles } from "@/constants/Styles";
 import { EvilIcons } from "@expo/vector-icons";
 
 const Sika = () => {
@@ -66,11 +65,11 @@ const Sika = () => {
                     style={{ width: 40, height: 40, borderRadius: 50 }}
                   />
                   <View>
-                    <Text>{kudi.code} </Text>
-                    <Text> {kudi.name}</Text>
+                    <Text style={{ color: "#C7C8CC" }}>{kudi.code}</Text>
+                    <Text style={{ color: "#C7C8CC" }}>{kudi.name}</Text>
                   </View>
                 </View>
-                <AntDesign name="right" size={13} color="black" />
+                <AntDesign name="right" size={13} color="#C7C8CC" />
               </TouchableOpacity>
             </Link>
           </BlurView>
