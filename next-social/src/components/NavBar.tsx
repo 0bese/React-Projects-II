@@ -79,7 +79,7 @@ const NavBar = () => {
           </SignedIn>
           <SignedOut>
             <div className="flex items-center gap-2 cursor-pointer">
-              <Image src={"/login.png"} width={20} height={20} alt="" />
+              <Image src={"/ login.png"} width={20} height={20} alt="" />
               <Link href={"/"}> Login/ Register</Link>
             </div>
           </SignedOut>
