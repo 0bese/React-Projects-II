@@ -19,7 +19,7 @@ const NavBar = () => {
         </Link>
       </div>
       {/* center */}
-      <div className="hidden md:flex w-[50%] text-sm ">
+      <div className="hidden md:flex w-[50%] text-sm items-center justify-between">
         <div className="flex gap-9 text-primary-700">
           {/* Nav Links */}
           <Link href={"/"} className="flex gap-2 items-center">
@@ -53,6 +53,20 @@ const NavBar = () => {
             <span>Stories</span>
           </Link>
         </div>
+        <div className="hidden xl:flex p-2 bg-primary-200 rounded-xl">
+          <input
+            type="text"
+            placeholder="search..."
+            className=" bg-transparent outline-none items-center placeholder-primary-600 text-primary-900"
+          />
+          <Image
+            src={"/search.png"}
+            className="w-4 h-4"
+            width={14}
+            height={14}
+            alt="search"
+          />
+        </div>
       </div>
       {/* right */}
       <div className="w-[30%] flex items-center gap-4 xl:gap-8 justify-end">
@@ -79,8 +93,8 @@ const NavBar = () => {
           </SignedIn>
           <SignedOut>
             <div className="flex items-center gap-2 cursor-pointer">
-              <Image src={"/ login.png"} width={20} height={20} alt="" />
-              <Link href={"/"}> Login/ Register</Link>
+              <Image src={"/login.png"} width={20} height={20} alt="" />
+              <Link href={"/sign-in"}> Login/ Register</Link>
             </div>
           </SignedOut>
         </ClerkLoaded>
