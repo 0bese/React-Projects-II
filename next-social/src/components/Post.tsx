@@ -13,7 +13,7 @@ const Post = () => {
             }
             width={40}
             height={40}
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 rounded-full object-cover"
             alt=""
           />
           <span className="font-medium text-primary-600">Kojo Obese</span>
@@ -25,14 +25,14 @@ const Post = () => {
         <div className="w-full min-h-96 relative">
           <Image
             src={
-              "https://images.pexels.com/photos/6000065/pexels-photo-6000065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              "https://images.pexels.com/photos/7275385/pexels-photo-7275385.jpeg?auto=compress&cs=tinysrgb&w=600"
             }
             fill
             className="object-cover rounded-md"
             alt=""
           />
         </div>
-        <p className="text-primary-900">
+        <p className="text-primary-00">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit alias
           aspernatur debitis excepturi assumenda autem repellendus est, ea
           corrupti natus ad. Nostrum quod laborum voluptatum, minus ea suscipit
