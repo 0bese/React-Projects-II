@@ -9,8 +9,8 @@ const RightMenu = ({ userId }: { userId?: string }) => {
     <div className="flex flex-col gap-6">
       {userId ? (
         <>
-          <UserInfoCard />
-          <UserMediaCard />
+          <UserInfoCard userId={userId} />
+          <UserMediaCard userId={userId} />
         </>
       ) : null}
       <FriendRequests />

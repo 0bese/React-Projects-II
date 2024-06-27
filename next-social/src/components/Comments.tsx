@@ -18,7 +18,7 @@ const Comments = () => {
           <input
             type="text"
             placeholder="Write a comment..."
-            className="flex-1 bg-transparent outline-none text-primary-900 placeholder-primary-600"
+            className="flex-1 bg-transparent outline-none text-primary-900 placeholder-primary-500"
           />
           <Image
             src={"/emoji.png"}
