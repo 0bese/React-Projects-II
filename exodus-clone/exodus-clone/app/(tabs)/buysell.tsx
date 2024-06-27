@@ -1,21 +1,15 @@
-import {
-  Button,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-import React, { useEffect } from "react";
-import { Link, Redirect, Stack, Tabs, useLocalSearchParams } from "expo-router";
-import { Colors } from "@/constants/Colors";
-import { useHeaderHeight } from "@react-navigation/elements";
-import Toggle from "@/components/Toggle";
-import Toggle3btn from "@/components/Toggle3btn";
+import { Redirect } from "expo-router";
+import { Text, View } from "react-native";
 
 const Buysell = () => {
-  return <Redirect href={"../currency"} />;
+  return (
+    <View>
+      <Text> my name is kojo </Text>
+      <Text> my name is kojo </Text>
+      <Text> my name is kojo </Text>
+      <Text> my name is kojo </Text>
+    </View>
+  );
 };
 
 export default Buysell;

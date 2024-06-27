@@ -18,7 +18,7 @@ const TradeLayout = () => {
         options={{
           headerShown: true,
           headerLeft: () => (
-            <TouchableOpacity onPress={() => router.navigate("./(tabs)")}>
+            <TouchableOpacity onPress={() => router.back}>
               <AntDesign
                 style={{ marginLeft: 5 }}
                 name="arrowleft"

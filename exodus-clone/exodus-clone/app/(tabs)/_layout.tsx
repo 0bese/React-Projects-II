@@ -6,7 +6,7 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { router, Stack, Tabs } from "expo-router";
+import { router, Stack, Tabs, useSegments } from "expo-router";
 import TabBar from "@/components/TabBar";
 import { Colors } from "@/constants/Colors";
 import { BlurView } from "expo-blur";
@@ -17,12 +17,18 @@ import { Entypo } from "@expo/vector-icons";
 
 const Layout = () => {
   const { top } = useSafeAreaInsets();
+  const segment = useSegments();
+  const page = segment[segment.length - 1];
+  const pagesToHideTabBar = ["buysell"];
   return (
     <Tabs
       backBehavior="history"
       tabBar={(props) => <TabBar {...props} />}
       screenOptions={{
         tabBarActiveTintColor: Colors.primary,
+        tabBarStyle: {
+          display: pagesToHideTabBar.includes(page) ? "none" : "flex",
+        },
       }}
     >
       <Tabs.Screen
@@ -43,6 +49,7 @@ const Layout = () => {
         name="buysell"
         options={{
           headerShown: false,
+          tabBarStyle: { display: segment[3] === "/buysell" ? "none" : "flex" },
         }}
       />
       <Tabs.Screen

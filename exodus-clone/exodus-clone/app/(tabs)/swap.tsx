@@ -38,7 +38,7 @@ const trade = () => {
               marginTop: 80,
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity onPress={router.back}>
               <AntDesign name="arrowleft" size={24} color={Colors.lightGray} />
             </TouchableOpacity>
             <Text style={{ color: "#CCC" }}>SWAP </Text>
