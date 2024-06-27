@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const ProfileCard = () => {
   return (
@@ -56,9 +57,12 @@ const ProfileCard = () => {
           </div>
           <span className="text-xs">1032 Followers</span>
         </div>
-        <button className="bg-blue-500 text-white text-xs p-2 rounded-md w-full">
+        <Link
+          href={"/profile/1"}
+          className="bg-blue-500 text-white text-center text-xs p-2 rounded-md w-full"
+        >
           My Profile
-        </button>
+        </Link>
       </div>
     </div>
   );
