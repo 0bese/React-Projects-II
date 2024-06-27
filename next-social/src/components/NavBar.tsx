@@ -15,7 +15,7 @@ const NavBar = () => {
       {/* left */}
       <div className="md:hidden lg:block w-[20%]">
         <Link href={"/"} className="font-bold text-xl text-primary-600">
-          SocialMedia{" "}
+          so:Media{" "}
         </Link>
       </div>
       {/* center */}

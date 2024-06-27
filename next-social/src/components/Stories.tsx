@@ -7,11 +7,11 @@ const Stories = () => {
         <div className=" flex flex-col items-center gap-2 cursor-pointer">
           <Image
             src={
-              "https://images.pexels.com/photos/20035451/pexels-photo-20035451/free-photo-of-buildings-around-cobblestone-street-in-city.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              "https://images.pexels.com/photos/4544904/pexels-photo-4544904.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] "
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
@@ -23,7 +23,7 @@ const Stories = () => {
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1]"
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
@@ -35,7 +35,7 @@ const Stories = () => {
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1]"
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
@@ -47,7 +47,7 @@ const Stories = () => {
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1]"
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
@@ -59,7 +59,7 @@ const Stories = () => {
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1]"
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
@@ -71,7 +71,7 @@ const Stories = () => {
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1]"
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
@@ -83,7 +83,7 @@ const Stories = () => {
             }
             width={80}
             height={80}
-            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1]"
+            className="w-20 h-20 rounded-full ring-2 ring-primary-600 p-[1] object-cover"
             alt=""
           />
           <span className="font-medium ">Kojo</span>
