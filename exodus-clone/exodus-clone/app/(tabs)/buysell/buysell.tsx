@@ -65,7 +65,7 @@ const buysell = () => {
           onOptionPress={setSelectedOption}
         />
       </View>
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView>
         {selectedOption === "Buy" ? (
           <>
             <View
@@ -185,7 +185,7 @@ const buysell = () => {
             <View
               style={{
                 flex: 1,
-                height: 500,
+                height: 400,
               }}
             >
               <TouchableOpacity
