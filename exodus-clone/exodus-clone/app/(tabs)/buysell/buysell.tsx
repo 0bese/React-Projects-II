@@ -56,6 +56,7 @@ const buysell = () => {
           marginTop: 70,
           position: "absolute",
           flexDirection: "row",
+          zIndex: 10,
         }}
       >
         <Toggle
