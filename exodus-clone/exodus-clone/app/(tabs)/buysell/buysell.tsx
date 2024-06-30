@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { useHeaderHeight } from "@react-navigation/elements";
 import Toggle3btn from "@/components/Toggle3btn";
-import sika from "../api/cntry";
+import sika from "../../api/cntry";
 import { defaultStyles } from "@/constants/Styles";
 import { Link, router, Stack, useLocalSearchParams } from "expo-router";
 import Toggle from "@/components/Toggle";
@@ -18,7 +18,7 @@ import { AntDesign, Entypo } from "@expo/vector-icons";
 
 //wei
 
-const trade = () => {
+const buysell = () => {
   const headerHeight = useHeaderHeight();
   const [selectedOption, setSelectedOption] = useState("Buy");
   const [defaultAmount, setDefaultAmount] = useState(0);
@@ -30,25 +30,68 @@ const trade = () => {
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
       <Stack.Screen
         options={{
-          title: "",
-          headerTitle: () => (
-            <View>
-              <Toggle
-                leftLabel="Buy"
-                rightLabel="Sell"
-                selectedOption={selectedOption}
-                onOptionPress={setSelectedOption}
-              />
-            </View>
-          ),
-
-          headerTransparent: true,
-          headerLargeTitle: true,
+          headerShown: false,
+          // title: "",
+          // headerLeft: () => (
+          //   <TouchableOpacity onPress={router.back}>
+          //     <AntDesign name="arrowleft" size={24} color={Colors.lightGray} />
+          //   </TouchableOpacity>
+          // ),
+          // headerTitle: () => (
+          //   <View>
+          //     <Toggle
+          //       leftLabel="Buy"
+          //       rightLabel="Sell"
+          //       selectedOption={selectedOption}
+          //       onOptionPress={setSelectedOption}
+          //     />
+          //   </View>
+          // ),
+          // headerTransparent: true,
+          // headerLargeTitle: true,
         }}
       />
-      <ScrollView contentContainerStyle={{ paddingTop: headerHeight }}>
+      <View
+        style={{
+          marginTop: 70,
+          position: "absolute",
+          flexDirection: "row",
+        }}
+      >
+        <Toggle
+          leftLabel="Buy"
+          rightLabel="Sell"
+          selectedOption={selectedOption}
+          onOptionPress={setSelectedOption}
+        />
+      </View>
+      <ScrollView style={{ flex: 1 }}>
         {selectedOption === "Buy" ? (
           <>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginHorizontal: 20,
+                marginTop: 80,
+              }}
+            >
+              <TouchableOpacity onPress={router.back}>
+                <AntDesign
+                  name="arrowleft"
+                  size={24}
+                  color={Colors.lightGray}
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+                <Entypo
+                  name="back-in-time"
+                  size={24}
+                  color={Colors.lightGray}
+                />
+              </TouchableOpacity>
+            </View>
             <View style={styles.currContainer}>
               <View key={sika[0].code} style={styles.sikaContainer}>
                 <Link href={`../sika/sika`} asChild>
@@ -176,7 +219,7 @@ const trade = () => {
   );
 };
 
-export default trade;
+export default buysell;
 
 const styles = StyleSheet.create({
   currContainer: {

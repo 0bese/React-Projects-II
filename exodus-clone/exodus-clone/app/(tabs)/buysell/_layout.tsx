@@ -14,7 +14,7 @@ const TradeLayout = () => {
   return (
     <Stack>
       <Stack.Screen
-        name="trade"
+        name="buysell"
         options={{
           headerShown: true,
           headerLeft: () => (

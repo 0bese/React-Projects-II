@@ -27,8 +27,17 @@ const trade = () => {
     //console.log(selectedOption);
   }, [selectedOption]);
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.background }}>
-      <ScrollView contentContainerStyle={{ paddingTop: headerHeight }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: Colors.background,
+      }}
+    >
+      <ScrollView
+        contentContainerStyle={{
+          paddingTop: headerHeight,
+        }}
+      >
         <>
           <View
             style={{

@@ -1,8 +1,3 @@
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { router, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -57,7 +52,7 @@ export default function RootLayout() {
           ),
         }}
       />
-      <Stack.Screen name="currency" options={{ headerShown: false }} />
+
       <Stack.Screen name="sika/sika" options={{ headerShown: false }} />
       <Stack.Screen name="random" options={{ headerShown: false }} />
     </Stack>
