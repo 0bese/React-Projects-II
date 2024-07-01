@@ -55,6 +55,7 @@ const buysell = () => {
         style={{
           marginTop: 70,
           position: "absolute",
+          marginHorizontal: 100,
           flexDirection: "row",
           zIndex: 10,
         }}
@@ -82,6 +83,7 @@ const buysell = () => {
                   name="arrowleft"
                   size={24}
                   color={Colors.lightGray}
+                  style={{ zIndex: 20 }}
                 />
               </TouchableOpacity>
 
